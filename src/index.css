@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -7,106 +7,429 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  /* background: linear-gradient(-45deg, #46c0e3, #1260a5, #46c0e3, #1260a5); */
+  background-size: 100% 150%;
+  background-image: linear-gradient(to bottom left, #4dceec, #125ea4);
+  /* animation: gradient 20s ease infinite; */
 }
 
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.outer_container {
+  width: 856px;
+  margin: 0 auto;
+}
 .container {
-  max-width: 500px;
-  margin: 30px auto;
-  overflow: auto;
-  min-height: 300px;
-  border: 1px solid steelblue;
-  padding: 30px;
-  border-radius: 5px;
-}
-
-.header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  align-items: stretch;
+  align-content: center;
+  justify-content: center;
+  flex-flow: column;
+  padding: 20px;
+  text-align: center;
+  margin: 0 auto;
+  width: 710px;
+  position: relative;
+  z-index: 0;
 }
-
-.btn {
-  display: inline-block;
-  background: #000;
+/* Location */
+.location, .date {
   color: #fff;
-  border: none;
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 15px;
-  font-family: inherit;
 }
-
-.btn:focus {
-  outline: none;
+.location {
+  margin-top: 40px;
 }
-
-.btn:active {
-  transform: scale(0.98);
+h1 {
+  font-size: 18px;
+  font-weight: 600;
 }
-
-.btn-block {
-  display: block;
-  width: 100%;
+.date {
+  padding-bottom: 20px;
 }
-
-.task {
-  background: #f4f4f4;
-  margin: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
+h2 {
+  font-size: 14px;
+  font-weight: 400;
 }
-
-.task.reminder {
-  border-left: 5px solid green;
-}
-
-.task h3 {
+.clouds {
+  position: fixed;
   display: flex;
-  align-items: center;
+  top: 200px;
+  z-index: 10;
+  width: 830px;
   justify-content: space-between;
+  animation: fade-in 4s infinite;
 }
-
-.add-form {
-  margin-bottom: 40px;
+.clouds .cloud_lg {
+  animation: move-left 5s infinite;
 }
-
-.form-control {
-  margin: 20px 0;
+.clouds .cloud_sm {
+  animation: move-right 7s infinite;
+  margin-top: 8%;
 }
-
-.form-control label {
-  display: block;
+@keyframes fade-in {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { opacity: 1; }
 }
-
-.form-control input {
-  width: 100%;
-  height: 40px;
-  margin: 5px;
-  padding: 3px 7px;
-  font-size: 17px;
+@keyframes move-right {
+  0% { margin-left: 0; }
+  50% { margin-left: 5px; }
+  100% { margin-left: 0; }
 }
-
-.form-control-check {
+@keyframes move-left {
+  0% { margin-right: 0; }
+  50% { margin-right: 5px; }
+  100% { margin-right: 0; }
+}
+.cityscape {
+  min-height: 368px;
   display: flex;
-  align-items: center;
+  flex-direction: row-reverse;
+  padding: 10px 20px;
   justify-content: space-between;
+  z-index: 10;
+  box-shadow: 0px -3px 15px 1px rgba(0, 0, 0, 0.4);
+  background: url('./components/images/Dallas.png') no-repeat top left;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.cityscape .city_img {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 65px;
+  height: 30px;
 }
 
-.form-control-check label {
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Units slider */
+.units {
+  margin-top: 16px;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  display: flex;
+  justify-content: space-around;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  z-index: 0;
+}
+.slider span {
+  margin-top: 3px;
+  z-index: 10;
+  position: relative;
+  font-size: 14px;
+  font-weight: 600;
+}
+.switch input:checked + .slider {
+  background-color: #65aed5;
+  color: #fff;
+}
+.switch input:checked + .slider > span:last-of-type {
+  color: #65aed5;
+}
+
+.switch input:focus + .slider {
+  box-shadow: 0 0 1px #65aed5;
+}
+
+.switch input:checked + .slider:before {
+  -webkit-transform: translateX(34px);
+  -ms-transform: translateX(34px);
+  transform: translateX(34px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Today stats */
+.today {
+  color: #65aed5;
+  font-weight: 600;
+  
+}
+.today .temp {
+  font-size: 51px;
+  font-weight: 400;
+}
+.today .icon {
+  font-size: 58px;
+  padding: 0 7px;
+}
+.today .desc_container {
+  display: flex;
+  flex-flow: column;
+  font-size: 14px;
+}
+.today .desc {
+  text-transform: capitalize;
+}
+
+/* Forecast */
+.forecast {
+  background-color: #fff;
+  display: flex;
+  flex-flow: row;
+  color: #4A4A4A;
+  justify-content: space-around;
+  box-shadow: 0px -3px 15px 1px rgba(0, 0, 0, 0.4);
+  border-radius: 0 0 3px 3px;
+  align-items: stretch;
+}
+
+.forecast .singleForecast {
+  padding: 20px 30px;
+  border-right: 1px solid #D8D8D8;
+  text-align: center;
   flex: 1;
 }
 
-.form-control-check input {
-  flex: 2;
-  height: 20px;
+.forecast .singleForecast:last-of-type {
+  border-right: none;
 }
 
-footer {
-  margin-top: 30px;
-  text-align: center;
+.forecast .singleForecast h3 {
+  font-weight: 700;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.forecast .singleForecast .icon {
+  font-size: 58px;
+  color: #65aed5;
+  line-height: 47px;
+}
+
+.forecast .singleForecast .temp {
+  font-size: 27px;
+  padding-left: 10px;
+}
+/* Forecast error message*/
+.no_forecast {
+  min-height: 100px;
+  padding: 20px 0 30px;
+}
+.error_msg {
+  font-size: 11px;
+  text-transform: uppercase;
+  
+}
+/* Loading animation for Forecast error */
+.loading_icon {
+  font-size: 45px;
+  animation: color-change 2.5s infinite;
+}
+
+
+@keyframes color-change {
+  0% { color: #fff; }
+  50% { color: #65aed5; }
+  100% { color: #fff; }
+}
+
+/* Small device baseline (landscape phones, 576px and up */
+@media (min-width:300px) {
+  .outer_container {
+    width: 100%;
+  }
+  .clouds {
+    width: 100%;
+    display: none;
+  }
+  .container {
+    width: 93%;
+    min-height: 368px;
+  }
+  .cityscape {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-align: center;
+    background: 
+    /* top, transparent white, faked with gradient */ 
+      linear-gradient(
+        rgba(255, 255, 255, 0.65), 
+        rgba(255, 255, 255, 0.65)
+      ),
+      /* bottom, image */
+      url('./components/images/Dallas.png');
+  }
+  .units {
+    order:2;
+  }
+  .today {
+    display: flex;
+    flex-flow: column;
+    order: 1;
+  }
+  .today .icon {
+    order: 1;
+    line-height: 40px;
+    margin-top: 20px;
+  }
+  .today .temp {
+    padding-left: 16px;
+    order: 2;
+  }
+  .today .desc_container {
+    font-size: 14px;
+    padding-top: 0;
+    text-align: center;
+    order: 2
+  }
+  .forecast {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    justify-content: flex-start;
+  }
+  .forecast .singleForecast {
+    display: inline-block;
+  }
+  
+  .switch input:checked + .slider {
+    background-color: #2685BD;
+  }
+  
+  .switch input:focus + .slider {
+    box-shadow: 0 0 1px #2685BD;
+  }
+  .switch input:checked + .slider > span:last-of-type,
+  .today,
+  .forecast .singleForecast .icon {
+    color: #2685BD;    
+  }
+}
+/* Small devices (landscape phones, 576px and up */
+@media (min-width:576px) {
+
+  
+
+}
+/* Medium devices (tablets, 768px and up */
+@media (min-width:768px) {
+  .outer_container {
+    width: 100%;
+  }
+  .clouds {
+    width: 100%;
+    display: flex;
+  }
+  .container {
+    width:710px;
+  }
+  .cityscape {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    background: url('./components/images/Dallas.png');
+  }
+  .units {
+    order:1;
+  }
+  .today {
+    display: flex;
+    flex-flow: row;
+    order: 2;
+  }
+  .today .temp {
+    padding-left: 0;
+    order:1;
+  }
+  .today .icon {
+    order:2;
+    line-height: normal;
+    margin-top:0;
+  }
+  .today .desc_container {
+    font-size: 14px;
+    padding-top: 14px;
+    text-align: left;
+    order:3;
+  }
+  .today .icon {
+    order:1;
+  }
+  .forecast {
+    flex-flow: row wrap;
+    justify-content: space-around;
+  }
+  .forecast .singleForecast {
+    border-right: 1px solid #D8D8D8;
+    flex: 1;
+  }
+  .switch input:checked + .slider {
+    background-color: #65afd4;
+  }
+  
+  .switch input:focus + .slider {
+    box-shadow: 0 0 1px #65afd4;
+  }
+  .switch input:checked + .slider > span:last-of-type,
+  .today,
+  .forecast .singleForecast .icon {
+    color: #65afd4;    
+  }
+}
+/* Custom for clouds (desktop, 856px and up */
+@media (min-width:856px) {
+  .outer_container {
+    width: 856px;
+  }
+  .clouds {
+    width: 830px;
+  }
+}
+/* Large devices (desktop, 1024 and up */
+@media (min-width:1024px) {
+  
+}
+/* Large devices (large desktops, 1200px and up */
+@media (min-width:1200px) {
+
 }
